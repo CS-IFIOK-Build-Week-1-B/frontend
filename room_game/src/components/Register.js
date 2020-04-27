@@ -4,7 +4,7 @@ import { useState } from "react";
 ////////////// Components
 // import Login from "./Login";
 ////////////// Utils
-import { axiosWithAuth } from "../Utils/axiosAuth";
+import { axiosWithAuth } from "../utils/axiosAuth";
 // import Axios from "axios";
 //////////////  Styling
 import TextField from "@material-ui/core/TextField";
@@ -115,12 +115,3 @@ const Register = (props) => {
 };
 
 export default withRouter(Register);
-
-
-
-
-
-
-
-
-

@@ -1,13 +1,11 @@
-import React from 'react';
-
-import './App.css';
+import React from "react";
+import Register from "./components/Register";
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-     
-    </div>
-  );
+  return <div className="App">
+    <Register/>
+  </div>;
 }
 
 export default App;
