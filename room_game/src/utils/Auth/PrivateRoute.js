@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  NavLink,
-  Redirect,
-} from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
+
 
 const PrivateRoute = ({ component: Component, ...restOfProps }) => {
   return (
@@ -15,7 +10,7 @@ const PrivateRoute = ({ component: Component, ...restOfProps }) => {
         if (localStorage.getItem("token")) {
           return <Component />;
         } else {
-          return <Redirect to="/login" />;
+          return <Redirect to="/" />;
         }
       }}
     />
