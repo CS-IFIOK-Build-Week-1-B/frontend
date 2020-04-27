@@ -4,7 +4,7 @@ import { useState } from "react";
 ////////////// Components
 // import Login from "./Login";
 ////////////// Utils
-import { axiosWithAuth } from "../utils/axiosAuth";
+import { axiosWithAuth } from "../utils/Auth/axiosAuth";
 // import Axios from "axios";
 //////////////  Styling
 import TextField from "@material-ui/core/TextField";
