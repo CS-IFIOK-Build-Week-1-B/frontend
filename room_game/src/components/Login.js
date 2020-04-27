@@ -43,7 +43,7 @@ const Login = (props) => {
         window.localStorage.setItem("token", res.data.key);
         alert("cool");
         setUserCredentials(initialUserCredentials);
-        // props.history.push("/list-of-todos");
+        props.history.push("/welcome");
       })
       .catch((err) => ("serverstuff", err));
   };
