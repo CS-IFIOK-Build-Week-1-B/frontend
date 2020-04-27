@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import img from "../utils/images/finalfantasy.jpg";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const LoginDiv = styled.div`
   height: 100vh;
@@ -8,7 +8,6 @@ export const LoginDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 5px solid red;
   background-image: url(${img});
   background-size: cover;
 `;
