@@ -93,9 +93,9 @@ const Login = (props) => {
           </Button>
         </form>
 
-        <NavLink exact to="/Register">
+        <NaviLink exact to="/Register">
           Don't have an account ? Register now.
-        </NavLink>
+        </NaviLink>
       </FormDiv>
     </LoginDiv>
   );
@@ -115,8 +115,24 @@ const LoginDiv = styled.div`
 const FormDiv = styled.div`
   height: 250px;
   width: 250px;
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   padding: 30px;
+  background: white;
+  opacity: 0.4;
+  border-radius: 5px;
+  :hover& {
+    opacity: 0.6;
+  }
+`;
+
+const NaviLink = styled(NavLink)`
+  font-size: 17px;
+  text-decoration: none;
+  color: black;
+
+  :hover& {
+    color: red;
+  }
 `;
 
 export default withRouter(Login);
