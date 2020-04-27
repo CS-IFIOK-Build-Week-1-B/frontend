@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { withRouter } from "react-router-dom";
+
+////////////// Utils
 import { axiosWithAuth } from "../utils/Auth/axiosAuth";
+
+//////////////  Styling
+import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import VpnKeyOutlinedIcon from "@material-ui/icons/VpnKeyOutlined";
-import { withRouter } from "react-router-dom";
-
 import { LoginDiv, FormDiv, NaviLink } from "../styling/LogAndRegister";
-// import { BrowserRouter as NavLink } from "react-router-dom";
-// import Register from "./Register";
-// import Home from "./Home";
 
 const Login = (props) => {
   const useStyles = makeStyles({
@@ -93,7 +93,7 @@ const Login = (props) => {
           </Button>
         </form>
 
-        <NaviLink exact to="/Register">
+        <NaviLink exact to="/register">
           Don't have an account ? Register now.
         </NaviLink>
       </FormDiv>
