@@ -15,10 +15,9 @@ import { withRouter } from "react-router-dom";
 
 const Register = (props) => {
   const initialUserDetails = {
-    firstName: "",
-    lastName: "",
     username: "",
-    password: "",
+    password1: "",
+    password2: "",
   };
 
   const [userDetails, setUserDetails] = useState(initialUserDetails);
@@ -39,14 +38,16 @@ const Register = (props) => {
   const RegisterNewUser = (event) => {
     event.preventDefault();
     axiosWithAuth()
-      .post("auth/register", userDetails)
+      .post("/api/registration/", userDetails)
       .then((res) => {
-        window.localStorage.setItem("token", res.data.token);
+        window.localStorage.setItem("token", res.data.key);
         alert(res.data.message);
-        props.history.push("/list-of-todos");
+        console.log(res);
+        console.log(res.data);
+        // props.history.push("/list-of-todos");
         setUserDetails(initialUserDetails);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.response));
   };
 
   return (
@@ -58,7 +59,7 @@ const Register = (props) => {
         onSubmit={RegisterNewUser}
       >
         <TextField
-          id="outlined-basicc"
+          id="outlined-basic"
           label="UserName"
           variant="outlined"
           name="username"
@@ -72,8 +73,8 @@ const Register = (props) => {
           id="outlined-basic"
           label="Password"
           variant="outlined"
-          name="password"
-          value={userDetails.password}
+          name="password1"
+          value={userDetails.password1}
           onChange={onRegister}
           type="password"
         />
@@ -81,23 +82,12 @@ const Register = (props) => {
         <TextField
           style={{ color: "white", paddingRight: "40px" }}
           id="outlined-basic"
-          label="First Name"
+          label="Confirm Password"
           variant="outlined"
-          name="firstName"
-          value={userDetails.firstName}
+          name="password2"
+          value={userDetails.password2}
           onChange={onRegister}
-          type="text"
-        />
-
-        <TextField
-          style={{ color: "white", paddingRight: "40px" }}
-          id="outlined-basic"
-          label="Last Name"
-          variant="outlined"
-          name="lastName"
-          value={userDetails.lastName}
-          onChange={onRegister}
-          type="text"
+          type="password"
         />
 
         <Button
