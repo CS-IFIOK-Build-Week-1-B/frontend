@@ -4,9 +4,9 @@ import { axiosWithAuth } from "../utils/Auth/axiosAuth";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import VpnKeyOutlinedIcon from "@material-ui/icons/VpnKeyOutlined";
-import { withRouter, NavLink } from "react-router-dom";
-import styled from "styled-components";
-import img from "../utils/images/finalfantasy.jpg";
+import { withRouter } from "react-router-dom";
+
+import { LoginDiv, FormDiv, NaviLink } from "../styling/LogAndRegister";
 // import { BrowserRouter as NavLink } from "react-router-dom";
 // import Register from "./Register";
 // import Home from "./Home";
@@ -46,7 +46,7 @@ const Login = (props) => {
         setUserCredentials(initialUserCredentials);
         props.history.push("/welcome");
       })
-      .catch((err) => ("serverstuff", err));
+      .catch((err) => err);
   };
 
   return (
@@ -100,39 +100,5 @@ const Login = (props) => {
     </LoginDiv>
   );
 };
-
-const LoginDiv = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 5px solid red;
-  background-image: url(${img});
-  background-size: cover;
-`;
-
-const FormDiv = styled.div`
-  height: 250px;
-  width: 250px;
-  /* border: 5px solid blue; */
-  padding: 30px;
-  background: white;
-  opacity: 0.4;
-  border-radius: 5px;
-  :hover& {
-    opacity: 0.6;
-  }
-`;
-
-const NaviLink = styled(NavLink)`
-  font-size: 17px;
-  text-decoration: none;
-  color: black;
-
-  :hover& {
-    color: red;
-  }
-`;
 
 export default withRouter(Login);
