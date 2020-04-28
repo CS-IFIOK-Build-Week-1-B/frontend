@@ -42,7 +42,6 @@ const Login = (props) => {
       .post("/api/login/", userCredentials)
       .then((res) => {
         window.localStorage.setItem("token", res.data.key);
-        alert("cool");
         setUserCredentials(initialUserCredentials);
         props.history.push("/welcome");
       })

@@ -40,9 +40,6 @@ const Register = (props) => {
       .post("/api/registration/", userDetails)
       .then((res) => {
         window.localStorage.setItem("token", res.data.key);
-        alert(res.data.message);
-        console.log(res);
-        console.log(res.data);
         props.history.push("/welcome");
         setUserDetails(initialUserDetails);
       })
