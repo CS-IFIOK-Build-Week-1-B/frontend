@@ -10,7 +10,7 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import VpnKeyOutlinedIcon from "@material-ui/icons/VpnKeyOutlined";
-import { LoginDiv, FormDiv } from "../styling/LogAndRegister";
+import { LoginDiv, RegisterForm, NaviLink } from "../styling/LogAndRegister";
 
 const Register = (props) => {
   const initialUserDetails = {
@@ -51,7 +51,7 @@ const Register = (props) => {
 
   return (
     <LoginDiv>
-      <FormDiv>
+      <RegisterForm>
         <form
           className={classes.root}
           noValidate
@@ -99,10 +99,13 @@ const Register = (props) => {
             startIcon={<VpnKeyOutlinedIcon />}
             type="submit"
           >
-            LogIn
+            Register
           </Button>
         </form>
-      </FormDiv>
+        <NaviLink exact to="/">
+          Already have an account? Login here!
+        </NaviLink>
+      </RegisterForm>
     </LoginDiv>
   );
 };

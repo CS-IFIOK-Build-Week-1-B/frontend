@@ -25,6 +25,10 @@ export const FormDiv = styled.div`
   }
 `;
 
+export const RegisterForm = styled(FormDiv)`
+  height: 310px;
+`;
+
 export const NaviLink = styled(NavLink)`
   font-size: 17px;
   text-decoration: none;
