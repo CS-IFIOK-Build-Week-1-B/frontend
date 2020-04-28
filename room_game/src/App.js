@@ -24,5 +24,6 @@ export default App;
 // usergaming, gaming111
 
 const Container = styled.div`
-
+  /* @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap"); */
+  /* font-family: "Roboto Condensed", sans-serif !important; */
 `;
