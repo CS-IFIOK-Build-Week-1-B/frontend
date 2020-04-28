@@ -160,7 +160,10 @@ const Input = styled.input`
   height: 75%;
   padding-left: 10px;
   font-size: 20px;
+  letter-spacing:3px;
   background-color: black;
+  color: white;
+  font-size: 20px;
   ::placeholder {
     font-size: 20px;
     padding-left: 10px;
@@ -228,8 +231,8 @@ const SignOut = styled(FontAwesomeIcon)`
   font-size: 40px;
   display: flex;
   padding-right: 5%;
-  :hover{
-      color:red
+  :hover {
+    color: red;
   }
 `;
 
