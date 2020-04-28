@@ -3,7 +3,6 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import { Route } from "react-router-dom";
 import Welcome from "./components/Welcome";
-// import "./App.css";
 import PrivateRoute from "./utils/Auth/PrivateRoute";
 import { GlobalStyles } from "./styling/GlobalStyles";
 import styled from "styled-components";
