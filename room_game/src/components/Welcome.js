@@ -228,6 +228,9 @@ const SignOut = styled(FontAwesomeIcon)`
   font-size: 40px;
   display: flex;
   padding-right: 5%;
+  :hover{
+      color:red
+  }
 `;
 
 const SignOutContainer = styled.div`
