@@ -4,7 +4,7 @@ import styled from "styled-components";
 import rock from "../utils/images/rock.jpeg";
 import walkway from "../utils/images/walkway.jpg";
 import treasure from "../utils/images/treasure.jpg";
-
+import Player from "./Player";
 const Map = () => {
   const [rooms, setRooms] = useState([]);
 
@@ -40,10 +40,11 @@ const Map = () => {
   return (
     <GamingContainer>
       <GamingMap>
+        <Player />
         {sortedRooms.map((room) => {
-          if (room.title == "Walkway" || room.title == "Starting Point") {
+          if (room.title === "Walkway" || room.title === "Starting Point") {
             return <Walkway />;
-          } else if (room.title == "Wall") {
+          } else if (room.title === "Wall") {
             return <Wall />;
           } else {
             return <Treasure />;
@@ -62,6 +63,7 @@ const GamingContainer = styled.div`
 `;
 
 const GamingMap = styled.div`
+  position: relative;
   width: 400px;
   height: 400px;
   margin: 0 auto;
@@ -85,8 +87,6 @@ const Walkway = styled(Tile)`
 const Wall = styled(Tile)`
   background-image: url(${rock});
   background-size: cover;
-  color: green;
-  filter: hue-rotate(233deg);
 `;
 
 const Treasure = styled(Tile)`
