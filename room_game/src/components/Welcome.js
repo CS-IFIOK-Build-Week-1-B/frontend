@@ -52,8 +52,8 @@ const Welcome = (props) => {
           <Control>
             <ControlText>
               <p>
-                Click the arrow keys to navigate through the map. "Say"
-                something to other players with the input box below.
+                Use your arrow keys to navigate through the map. "Say" something
+                to other players with the input box below.
               </p>
             </ControlText>
             <ControlDirections>
@@ -121,6 +121,7 @@ const Game = styled.div`
   background-color: black;
   color: white;
   opacity: 0.8;
+  padding: 15px;
 `;
 
 const Left = styled.div`
@@ -142,6 +143,7 @@ const Control = styled.div`
 `;
 
 const Chat = styled.div`
+  /* padding-bottom:20px; */
   height: 10%;
   display: flex;
   justify-content: space-around;
@@ -153,6 +155,7 @@ const Input = styled.input`
   margin: 5px;
   height: 75%;
   padding-left: 10px;
+
   font-size: 20px;
   letter-spacing: 3px;
   background-color: black;
@@ -175,9 +178,9 @@ const ControlText = styled.div`
   justify-content: center;
   width: 50%;
   height: 100%;
-  font-size: 32px;
+  font-size: 25px;
   letter-spacing: 1px;
-  padding: 5px;
+  padding: 15px;
 `;
 
 const ControlDirections = styled.div`
