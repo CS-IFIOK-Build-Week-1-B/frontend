@@ -22,13 +22,27 @@ const Player = (props) => {
 
     switch (e.keyCode) {
       case 37:
-        return sethorizontal(horizontal - 1), console.log("west");
+        return (
+          console.log("west"),
+          horizontal - 1 < 0 ? sethorizontal(0) : sethorizontal(horizontal - 1)
+        );
+
       case 38:
-        return setvertical(vertical - 1), console.log("north");
+        return (
+          console.log("north"),
+          vertical - 1 < 0 ? setvertical(0) : setvertical(vertical - 1)
+        );
       case 39:
-        return sethorizontal(horizontal + 1), console.log("east");
+        return (
+          console.log("east"),
+          horizontal + 1 > 9 ? sethorizontal(9) : sethorizontal(horizontal + 1)
+        );
+
       case 40:
-        return setvertical(vertical + 1), console.log("south");
+        return (
+          console.log("south"),
+          vertical + 1 > 9 ? setvertical(9) : setvertical(vertical + 1)
+        );
 
       default:
         return horizontal, vertical;
