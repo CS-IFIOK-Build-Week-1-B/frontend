@@ -1,10 +1,10 @@
 // import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
 import { axiosWithAuth } from "../utils/Auth/axiosAuth";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import img from "../utils/images/city.jpg";
-import mapimage from "../utils/images/filler.jpg";
+import Map from "./Map";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -48,7 +48,7 @@ const Welcome = (props) => {
     <Container>
       <Game>
         <Left>
-          <Map></Map>
+          <Map />
           <Control>
             <ControlText>
               <p>
@@ -136,12 +136,6 @@ const Right = styled.div`
   border-left: 1px solid white;
 `;
 
-const Map = styled.div`
-  height: 60%;
-  background-image: url(${mapimage});
-  background-size: cover;
-`;
-
 const Control = styled.div`
   height: 30%;
   display: flex;
@@ -160,7 +154,7 @@ const Input = styled.input`
   height: 75%;
   padding-left: 10px;
   font-size: 20px;
-  letter-spacing:3px;
+  letter-spacing: 3px;
   background-color: black;
   color: white;
   font-size: 20px;
