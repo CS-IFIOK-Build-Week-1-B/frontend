@@ -3,12 +3,12 @@ import styled from "styled-components";
 import player from "../utils/images/player.jpeg";
 import { HandleMovement } from "./Movement";
 const Player = (props) => {
-  const [playerPosition, setPlayerPosition] = useState([0, 0]);
-
+  const [horizontal, sethorizontal] = useState(0);
+  const [vertical, setvertical] = useState(0);
   const PlayerDiv = styled.img`
   position: absolute;
-  top: ${playerPosition[0]};
-  left: ${playerPosition[1]};
+  top: ${vertical * 40}px;
+  left: ${horizontal * 40}px;
   /* background-image: url(${player}); */
   /* src:url(${player}); */
   background-position: 0 0;
@@ -17,23 +17,40 @@ const Player = (props) => {
   width: 40px;
   height: 40px;
 `;
-  console.log(playerPosition);
   const HandleMovement = (e) => {
     e.preventDefault();
 
     switch (e.keyCode) {
       case 37:
-        return setPlayerPosition(playerPosition[1] - 1);
+        return (
+          console.log("west"),
+          horizontal - 1 < 0 ? sethorizontal(0) : sethorizontal(horizontal - 1)
+        );
+
       case 38:
-        return setPlayerPosition(playerPosition[0] + 1);
+        return (
+          console.log("north"),
+          vertical - 1 < 0 ? setvertical(0) : setvertical(vertical - 1)
+        );
       case 39:
-        return setPlayerPosition(playerPosition[1] + 1);
+        return (
+          console.log("east"),
+          horizontal + 1 > 9 ? sethorizontal(9) : sethorizontal(horizontal + 1)
+        );
+
       case 40:
-        return setPlayerPosition(playerPosition[0] - 1);
+        return (
+          console.log("south"),
+          vertical + 1 > 9 ? setvertical(9) : setvertical(vertical + 1)
+        );
 
       default:
+        return horizontal, vertical;
     }
   };
+
+  console.log("vertical", vertical);
+  console.log("horizontal", horizontal);
 
   window.onkeydown = HandleMovement;
 
