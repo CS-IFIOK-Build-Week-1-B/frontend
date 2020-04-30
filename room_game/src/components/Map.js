@@ -44,6 +44,7 @@ const GamingMap = styled.div`
   flex-wrap: wrap;
   font-size: 15px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
+
 `;
 
 const Tile = styled.div`

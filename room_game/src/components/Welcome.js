@@ -779,7 +779,7 @@ const Welcome = (props) => {
     sethorizontal(0);
     setvertical(0);
     setPosition(1);
-    setSeconds(5);
+    setSeconds(8);
   };
 
   return (
@@ -787,9 +787,11 @@ const Welcome = (props) => {
       <Game>
         <Left>
           <Map sortedRooms={sortedRooms} />
-          {/* {seconds == 0 ? <ReplayModal onClick={() => repeatGame()}>Repeat</ReplayModal> : null} */}
+          {seconds == 0 ? (
+            <button onClick={() => repeatGame()}>Repeat</button>
+          ) : null}
 
-          <ReplayModal>modal </ReplayModal>
+          {/* <ReplayModal>modal </ReplayModal> */}
           <Control>
             <ControlText>
               <p>
@@ -863,6 +865,7 @@ const Game = styled.div`
   background-color: black;
   color: white;
   opacity: 0.8;
+  padding:20px;
 `;
 
 const Left = styled.div`
@@ -917,9 +920,10 @@ const ControlText = styled.div`
   justify-content: center;
   width: 50%;
   height: 100%;
-  font-size: 32px;
+  font-size: 28px;
   letter-spacing: 1px;
   padding: 5px;
+  padding-left:20px;
 `;
 
 const ControlDirections = styled.div`
@@ -995,11 +999,9 @@ const ChatBox = styled.div`
   padding-left: 2.5%;
 `;
 
-
 const ReplayModal = styled.div`
-height:500px;
-width:500px;
-z-index:100;
-background:blue
-
-`
+  height: 500px;
+  width: 500px;
+  z-index: 100;
+  background: blue;
+`;
