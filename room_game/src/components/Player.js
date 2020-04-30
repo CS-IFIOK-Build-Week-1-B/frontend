@@ -5,7 +5,7 @@ import { HorizontalContext } from "./HorizontalContext";
 import { VerticalContext } from "./VerticalContext";
 import styled from "styled-components";
 import player from "../utils/images/player.jpeg";
-
+import { walls, treasure, fires } from "../utils/Data/MapComponentsIds";
 const Player = (props) => {
   const [horizontal, sethorizontal] = useContext(HorizontalContext);
   const [vertical, setvertical] = useContext(VerticalContext);
@@ -13,48 +13,9 @@ const Player = (props) => {
   const [position, setPosition] = useContext(PlayerContext);
   const [seconds, setSeconds] = useContext(TimerContext);
 
-  const fires = [68, 46, 49];
-
-  const treasure = [72];
-
-  const walls = [
-    2,
-    13,
-    14,
-    15,
-    18,
-    22,
-    26,
-    28,
-    29,
-    35,
-    37,
-    43,
-    45,
-    47,
-    48,
-    53,
-    61,
-    62,
-    63,
-    65,
-    66,
-    69,
-    71,
-    74,
-    79,
-    82,
-    85,
-    87,
-    89,
-    91,
-    93,
-    99,
-  ];
-
   const HandleMovement = (e) => {
     e.preventDefault();
-    
+
     switch (e.keyCode) {
       case 37:
         if (fires.includes(position)) {
@@ -165,8 +126,6 @@ const Player = (props) => {
         return;
     }
   };
-
-  
 
   console.log("vertical", vertical);
   console.log("horizontal", horizontal);
