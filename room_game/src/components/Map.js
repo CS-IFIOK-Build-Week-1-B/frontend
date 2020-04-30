@@ -50,6 +50,7 @@ const GamingMap = styled.div`
 const Tile = styled.div`
   width: 10%;
   height: 10%;
+
 `;
 
 const Walkway = styled(Tile)`
