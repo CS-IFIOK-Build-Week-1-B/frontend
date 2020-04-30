@@ -1,5 +1,5 @@
-// import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { PlayerContext } from "./PlayerContext";
 import { axiosWithAuth } from "../utils/Auth/axiosAuth";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
@@ -26,6 +26,8 @@ library.add(
 );
 
 const Welcome = (props) => {
+  const [position, setPosition] = useContext(PlayerContext);
+
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -99,11 +101,11 @@ const Welcome = (props) => {
             <SignOut icon={faSignOutAlt} onClick={() => logout()} />
           </SignOutContainer>
           <RoomDescription>
-            {sortedRooms[0] ? (
+            {sortedRooms[position-1] ? (
               <span>
-                <p>Welcome to {rooms[0].title}</p>
+                <p>Welcome to {rooms[position-1].title}</p>
                 <br />
-                <p>{rooms[0].description}</p>
+                <p>{rooms[position-1].description}</p>
               </span>
             ) : (
               <p>Loading...</p>

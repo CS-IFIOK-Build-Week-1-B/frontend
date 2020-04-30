@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { PlayerContext } from "./PlayerContext";
 import styled from "styled-components";
 import player from "../utils/images/player.jpeg";
 
 const Player = (props) => {
-
   const [horizontal, sethorizontal] = useState(0);
   const [vertical, setvertical] = useState(0);
 
-  const [position, setPosition] = useState(1)
+  const [position, setPosition] = useContext(PlayerContext);
 
   const PlayerDiv = styled.img`
-
-  position: absolute;
-  top: ${vertical * 40}px;
-  left: ${horizontal * 40}px;
-  background-position: 0 0;
-  background-color:blue;
-  width: 40px;
-  height: 40px;
-`;
+    position: absolute;
+    top: ${vertical * 40}px;
+    left: ${horizontal * 40}px;
+    background-position: 0 0;
+    background-color: blue;
+    width: 40px;
+    height: 40px;
+  `;
 
   const HandleMovement = (e) => {
     e.preventDefault();
@@ -28,7 +27,7 @@ const Player = (props) => {
         return (
           console.log("west"),
           horizontal - 1 < 0 ? sethorizontal(0) : sethorizontal(horizontal - 1),
-          horizontal - 1 < 0 ? setPosition(position) : setPosition(position -1)
+          horizontal - 1 < 0 ? setPosition(position) : setPosition(position - 1)
         );
 
       case 38:
@@ -41,7 +40,7 @@ const Player = (props) => {
         return (
           console.log("east"),
           horizontal + 1 > 9 ? sethorizontal(9) : sethorizontal(horizontal + 1),
-          horizontal + 1 > 9? setPosition(position) : setPosition(position + 1)
+          horizontal + 1 > 9 ? setPosition(position) : setPosition(position + 1)
         );
 
       case 40:
