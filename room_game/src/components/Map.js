@@ -1,47 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "../utils/Auth/axiosAuth";
+import React from "react";
 import styled from "styled-components";
 import rock from "../utils/images/rock.jpeg";
 import walkway from "../utils/images/walkway.jpg";
 import treasure from "../utils/images/treasure.jpg";
 import Player from "./Player";
-const Map = () => {
-  const [rooms, setRooms] = useState([]);
 
-  useEffect(() => {
-    axiosWithAuth()
-      .get("/api/adv/getrooms/")
-      .then((res) => {
-        setRooms(res.data.rooms);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  const sortRooms = (a, b) => {
-    const tileA = a.id;
-    const tileB = b.id;
-
-    let comparison = 0;
-
-    if (tileA > tileB) {
-      comparison = 1;
-    } else if (tileA < tileB) {
-      comparison = -1;
-    }
-    return comparison;
-  };
-
-  const sortedRooms = rooms.sort(sortRooms);
-
-  console.log(sortedRooms);
-
+const Map = (props) => {
+  
   return (
     <GamingContainer>
       <GamingMap>
-        <Player />
-        {sortedRooms.map((room) => {
+        <Player sortedRooms={props.sortedRooms}/>
+        {props.sortedRooms.map((room) => {
           if (room.title === "Walkway" || room.title === "Starting Point") {
             return <Walkway />;
           } else if (room.title === "Wall") {

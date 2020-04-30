@@ -1,5 +1,5 @@
-// import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { PlayerContext } from "./PlayerContext";
 import { axiosWithAuth } from "../utils/Auth/axiosAuth";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
@@ -26,6 +26,8 @@ library.add(
 );
 
 const Welcome = (props) => {
+  const [position, setPosition] = useContext(PlayerContext);
+
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -39,6 +41,24 @@ const Welcome = (props) => {
       });
   }, []);
 
+  const sortRooms = (a, b) => {
+    const tileA = a.id;
+    const tileB = b.id;
+
+    let comparison = 0;
+
+    if (tileA > tileB) {
+      comparison = 1;
+    } else if (tileA < tileB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
+  const sortedRooms = rooms.sort(sortRooms);
+
+  console.log(sortedRooms);
+
   const logout = () => {
     localStorage.clear();
     props.history.push("/");
@@ -48,7 +68,7 @@ const Welcome = (props) => {
     <Container>
       <Game>
         <Left>
-          <Map />
+          <Map sortedRooms={sortedRooms} />
           <Control>
             <ControlText>
               <p>
@@ -81,14 +101,14 @@ const Welcome = (props) => {
             <SignOut icon={faSignOutAlt} onClick={() => logout()} />
           </SignOutContainer>
           <RoomDescription>
-            {rooms[10] ? (
+            {sortedRooms[position-1] ? (
               <span>
-                <p>Welcome to {rooms[10].title}</p>
+                <p>Welcome to {rooms[position-1].title}</p>
                 <br />
-                <p>{rooms[10].description}</p>
+                <p>{rooms[position-1].description}</p>
               </span>
             ) : (
-              <p>No</p>
+              <p>Loading...</p>
             )}
           </RoomDescription>
           <ChatBox>
