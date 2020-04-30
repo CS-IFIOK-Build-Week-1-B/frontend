@@ -39,6 +39,24 @@ const Welcome = (props) => {
       });
   }, []);
 
+  const sortRooms = (a, b) => {
+    const tileA = a.id;
+    const tileB = b.id;
+
+    let comparison = 0;
+
+    if (tileA > tileB) {
+      comparison = 1;
+    } else if (tileA < tileB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
+  const sortedRooms = rooms.sort(sortRooms);
+
+  console.log(sortedRooms);
+
   const logout = () => {
     localStorage.clear();
     props.history.push("/");
@@ -48,7 +66,7 @@ const Welcome = (props) => {
     <Container>
       <Game>
         <Left>
-          <Map />
+          <Map sortedRooms={sortedRooms} />
           <Control>
             <ControlText>
               <p>
@@ -81,14 +99,14 @@ const Welcome = (props) => {
             <SignOut icon={faSignOutAlt} onClick={() => logout()} />
           </SignOutContainer>
           <RoomDescription>
-            {rooms[10] ? (
+            {sortedRooms[0] ? (
               <span>
-                <p>Welcome to {rooms[10].title}</p>
+                <p>Welcome to {rooms[0].title}</p>
                 <br />
-                <p>{rooms[10].description}</p>
+                <p>{rooms[0].description}</p>
               </span>
             ) : (
-              <p>No</p>
+              <p>Loading...</p>
             )}
           </RoomDescription>
           <ChatBox>
