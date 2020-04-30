@@ -83,7 +83,7 @@ const Welcome = (props) => {
           <RoomDescription>
             {rooms[10] ? (
               <span>
-                <p>Welcome to {rooms[10].title}</p>
+                <p>Welcome to {rooms[15].title}</p>
                 <br />
                 <p>{rooms[10].description}</p>
               </span>

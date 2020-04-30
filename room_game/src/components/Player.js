@@ -17,6 +17,9 @@ const Player = (props) => {
   width: 40px;
   height: 40px;
 `;
+
+
+
   const HandleMovement = (e) => {
     e.preventDefault();
 
