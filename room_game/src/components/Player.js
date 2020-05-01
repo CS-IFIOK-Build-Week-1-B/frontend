@@ -46,7 +46,8 @@ const Player = (props) => {
         }
       case 38:
         if (fires.includes(position)) {
-          return sethorizontal(0), setvertical(0), setPosition(1);
+          return sethorizontal(0),
+            setvertical(0), setPosition(1)
         } else if (treasure.includes(position)) {
           return (
             alert("Congratulation! You've found the treasure!"),
