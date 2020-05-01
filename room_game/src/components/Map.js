@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, {  useContext } from "react";
 import styled from "styled-components";
 import rock from "../utils/images/rock.jpeg";
 import walkway from "../utils/images/walkway.jpg";
@@ -12,10 +12,10 @@ import { HorizontalContext } from "./HorizontalContext";
 import { VerticalContext } from "./VerticalContext";
 
 const Map = (props) => {
-  const [position, setPosition] = useContext(PlayerContext);
+  const [ setPosition] = useContext(PlayerContext);
   const [seconds, setSeconds] = useContext(TimerContext);
-  const [horizontal, sethorizontal] = useContext(HorizontalContext);
-  const [vertical, setvertical] = useContext(VerticalContext);
+  const [ sethorizontal] = useContext(HorizontalContext);
+  const [ setvertical] = useContext(VerticalContext);
   const repeatGame = () => {
     sethorizontal(0);
     setvertical(0);
@@ -24,12 +24,12 @@ const Map = (props) => {
   };
   return (
     <GamingContainer>
-      {seconds == 0 ? (
+      {seconds === 0 ? (
         <ReplayModal>
           <ReplayModalTextButtonDiv>
             <ReplayText>You lost, click replay to start again</ReplayText>
             <ReplayButton onClick={() => repeatGame()}>
-              Click here to play again
+              Replay
             </ReplayButton>
           </ReplayModalTextButtonDiv>
         </ReplayModal>
@@ -101,7 +101,7 @@ const ReplayButton = styled.button`
   border-radius: 20px;
   opacity: 0.8;
   margin-top: 30px;
-  font-size: 15px;
+  font-size: 22px;
 
   :hover& {
     color: red;
@@ -113,7 +113,7 @@ const ReplayButton = styled.button`
 
 const ReplayText = styled.p`
   color: white;
-  font-size: 15px;
+  font-size: 20px;
 `;
 
 const Tile = styled.div`

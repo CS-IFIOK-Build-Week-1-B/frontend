@@ -1,8 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { PlayerContext } from "./PlayerContext";
 import { TimerContext } from "./TimerContext";
-import { HorizontalContext } from "./HorizontalContext";
-import { VerticalContext } from "./VerticalContext";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import img from "../utils/images/city.jpg";
@@ -20,8 +18,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { rooms } from "../utils/Data/Rooms";
 
-import replay from "../utils/images/replay.jpg";
-
 library.add(
   faArrowUp,
   faArrowDown,
@@ -32,7 +28,7 @@ library.add(
 );
 
 const Welcome = (props) => {
-  const [position, setPosition] = useContext(PlayerContext);
+  const [position] = useContext(PlayerContext);
 
   const sortRooms = (a, b) => {
     const tileA = a.id;
@@ -58,35 +54,17 @@ const Welcome = (props) => {
   };
 
   const [seconds, setSeconds] = useContext(TimerContext);
-  const [horizontal, sethorizontal] = useContext(HorizontalContext);
-  const [vertical, setvertical] = useContext(VerticalContext);
+
 
   useEffect(() => {
     if (seconds > 0) {
       setTimeout(() => setSeconds(seconds - 1), 1000);
-    } else {
-      // alert("Too late, the treasure has been stolen,you lost !");
-    }
+    } 
   });
-
-  const repeatGame = () => {
-    sethorizontal(0);
-    setvertical(0);
-    setPosition(1);
-    setSeconds(8);
-  };
 
   return (
     <Container>
       <Game>
-         {/* {seconds == 0 ? ( 
-        <ReplayModal onClick={() => repeatGame()}>
-          <ReplayModalTextButtonDiv>
-            <ReplayText>You lost, click replay to start again</ReplayText>
-            <ReplayButton>Click here to play again</ReplayButton>
-          </ReplayModalTextButtonDiv>
-        </ReplayModal>
-         ) : null}  */}
         <Left>
           <Map sortedRooms={sortedRooms} />
 
@@ -296,46 +274,4 @@ const ChatBox = styled.div`
   height: 40%;
   font-size: 22px;
   padding-left: 2.5%;
-`;
-
-const ReplayModal = styled.div`
-  height: 300px;
-  width: 300px;
-  border-radius: 15px;
-  z-index: 2;
-  background: blue;
-  position: absolute;
-  /* opacity: 1; */
-  text-align: center;
-  background-image: url(${replay});
-  background-size: cover;
-  margin-left: 25%;
-
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
-`;
-
-const ReplayModalTextButtonDiv = styled.div`
-  height: 300px;
-  width: 300px;
-  margin-top: 20%;
-
-`;
-
-const ReplayButton = styled.button`
-  height: 50px;
-  width: 200px;
-  background-color:black;
-  color:white;
-  border-radius:20px;
-  opacity:0.8;
-  margin-top: 30px;
-  font-size:15px
-`;
-
-const ReplayText = styled.p`
-  color: white;
-  font-size: 15px;
 `;
