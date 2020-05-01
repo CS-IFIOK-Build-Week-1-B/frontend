@@ -12,10 +12,10 @@ import { HorizontalContext } from "./HorizontalContext";
 import { VerticalContext } from "./VerticalContext";
 
 const Map = (props) => {
-  const [ setPosition] = useContext(PlayerContext);
+  const [position, setPosition] = useContext(PlayerContext);
   const [seconds, setSeconds] = useContext(TimerContext);
-  const [ sethorizontal] = useContext(HorizontalContext);
-  const [ setvertical] = useContext(VerticalContext);
+  const [horizontal, sethorizontal] = useContext(HorizontalContext);
+  const [vertical, setvertical] = useContext(VerticalContext);
   const repeatGame = () => {
     sethorizontal(0);
     setvertical(0);
