@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { PlayerContext } from "./PlayerContext";
 import { TimerContext } from "./TimerContext";
 import { withRouter } from "react-router-dom";
@@ -28,6 +28,7 @@ library.add(
 );
 
 const Welcome = (props) => {
+  const [game, setGame] = useState(false);
   const [position] = useContext(PlayerContext);
 
   const sortRooms = (a, b) => {
@@ -46,7 +47,9 @@ const Welcome = (props) => {
 
   const sortedRooms = rooms.sort(sortRooms);
 
-  console.log(sortedRooms);
+  const startGame = () => {
+    setGame(true);
+  };
 
   const logout = () => {
     localStorage.clear();
@@ -55,19 +58,30 @@ const Welcome = (props) => {
 
   const [seconds, setSeconds] = useContext(TimerContext);
 
-
   useEffect(() => {
-    if (seconds > 0) {
+    if (position == 72) {
+      return;
+    } else if (seconds > 0 && game == true) {
       setTimeout(() => setSeconds(seconds - 1), 1000);
-    } 
+    }
   });
 
   return (
     <Container>
       <Game>
         <Left>
-          <Map sortedRooms={sortedRooms} />
-
+          <Play>
+            <Instructions>
+              Welcome to our little Dungeon Game! To win, you have to find the
+              treasure within 8 seconds. But there is more than just one
+              treasure box on the map, so find out which one contains the
+              treasure and makes you rich! Oh! And don't step inside the fire
+              unless you want to die!
+            </Instructions>
+            <Start onClick={() => startGame()}>Start</Start>
+            <Counter>Counter: {seconds}sec</Counter>
+            <Map sortedRooms={sortedRooms} game={game} setGame={setGame} />
+          </Play>
           <Control>
             <ControlText>
               <p>
@@ -112,7 +126,6 @@ const Welcome = (props) => {
           </RoomDescription>
           <ChatBox>
             <p>KingLouie94: Hey, what's up???</p>
-            <p>{seconds}</p>
           </ChatBox>
         </Right>
       </Game>
@@ -149,6 +162,34 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   width: 70%;
+  height: 100%;
+  justify-content: space-around;
+`;
+
+const Instructions = styled.p`
+  font-size: 1.2rem;
+  width: 20%;
+`;
+
+const Play = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+const Start = styled.button`
+  width: 80px;
+  height: 80px;
+  font-size: 20px;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  margin-left: 50px;
+`;
+
+const Counter = styled.h2`
+  margin-left: 50px;
+  font-size: 18px;
 `;
 
 const Right = styled.div`

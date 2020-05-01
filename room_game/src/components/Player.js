@@ -2,123 +2,144 @@ import React, { useContext } from "react";
 import { PlayerContext } from "./PlayerContext";
 import { HorizontalContext } from "./HorizontalContext";
 import { VerticalContext } from "./VerticalContext";
+import { TimerContext } from "./TimerContext";
 import styled from "styled-components";
-import player from "../utils/images/player.jpeg";
+import player from "../utils/images/player.png";
 import { walls, treasure, fires } from "../utils/Data/MapComponentsIds";
 const Player = (props) => {
   const [horizontal, sethorizontal] = useContext(HorizontalContext);
   const [vertical, setvertical] = useContext(VerticalContext);
 
   const [position, setPosition] = useContext(PlayerContext);
-  // const [seconds, setSeconds] = useContext(TimerContext);
+  const [seconds, setSeconds] = useContext(TimerContext);
 
   const HandleMovement = (e) => {
     e.preventDefault();
 
     switch (e.keyCode) {
       case 37:
-        if (fires.includes(position)) {
-          return sethorizontal(0), setvertical(0), setPosition(1);
-        } else if (treasure.includes(position)) {
-          return (
-            alert("Congratulation! You've found the treasure!"),
-            sethorizontal(0),
-            setvertical(0),
-            setPosition(1)
-          );
-        } else if (walls.includes(position - 1)) {
-          return (
-            sethorizontal(horizontal),
-            setvertical(vertical),
-            setPosition(position)
-          );
+        if (props.game == false) {
+          return;
         } else {
-          return (
-            console.log("west"),
-            horizontal - 1 < 0
-              ? sethorizontal(0)
-              : sethorizontal(horizontal - 1),
-            horizontal - 1 < 0
-              ? setPosition(position)
-              : setPosition(position - 1)
-          );
+          if (fires.includes(position)) {
+            return sethorizontal(0), setvertical(0), setPosition(1);
+          } else if (treasure.includes(position)) {
+            return (
+              alert(
+                `Congratulation! You've found the treasure and ${seconds} seconds left!`
+              ),
+              sethorizontal(0),
+              setvertical(0),
+              setPosition(1),
+              setSeconds(8),
+              props.setGame(false)
+            );
+          } else if (walls.includes(position - 1)) {
+            return (
+              sethorizontal(horizontal),
+              setvertical(vertical),
+              setPosition(position)
+            );
+          } else {
+            return (
+              console.log("west"),
+              horizontal - 1 < 0
+                ? sethorizontal(0)
+                : sethorizontal(horizontal - 1),
+              horizontal - 1 < 0
+                ? setPosition(position)
+                : setPosition(position - 1)
+            );
+          }
         }
       case 38:
-        if (fires.includes(position)) {
-          return sethorizontal(0), setvertical(0), setPosition(1);
-        } else if (treasure.includes(position)) {
-          return (
-            alert("Congratulation! You've found the treasure!"),
-            sethorizontal(0),
-            setvertical(0),
-            setPosition(1)
-          );
-        } else if (walls.includes(position - 10)) {
-          return (
-            sethorizontal(horizontal),
-            setvertical(vertical),
-            setPosition(position)
-          );
+        if (props.game == false) {
+          return;
         } else {
-          return (
-            console.log("north"),
-            vertical - 1 < 0 ? setvertical(0) : setvertical(vertical - 1),
-            vertical - 1 < 0
-              ? setPosition(position)
-              : setPosition(position - 10)
-          );
+          if (fires.includes(position)) {
+            return sethorizontal(0), setvertical(0), setPosition(1);
+          } else if (treasure.includes(position)) {
+            return (
+              alert("Congratulation! You've found the treasure!"),
+              sethorizontal(0),
+              setvertical(0),
+              setPosition(1)
+            );
+          } else if (walls.includes(position - 10)) {
+            return (
+              sethorizontal(horizontal),
+              setvertical(vertical),
+              setPosition(position)
+            );
+          } else {
+            return (
+              console.log("north"),
+              vertical - 1 < 0 ? setvertical(0) : setvertical(vertical - 1),
+              vertical - 1 < 0
+                ? setPosition(position)
+                : setPosition(position - 10)
+            );
+          }
         }
       case 39:
-        if (fires.includes(position)) {
-          return sethorizontal(0), setvertical(0), setPosition(1);
-        } else if (treasure.includes(position)) {
-          return (
-            alert("Congratulation! You've found the treasure!"),
-            sethorizontal(0),
-            setvertical(0),
-            setPosition(1)
-          );
-        } else if (walls.includes(position + 1)) {
-          return (
-            sethorizontal(horizontal),
-            setvertical(vertical),
-            setPosition(position)
-          );
+        if (props.game == false) {
+          return;
         } else {
-          return (
-            console.log("east"),
-            horizontal + 1 > 9
-              ? sethorizontal(9)
-              : sethorizontal(horizontal + 1),
-            horizontal + 1 > 9
-              ? setPosition(position)
-              : setPosition(position + 1)
-          );
+          if (fires.includes(position)) {
+            return sethorizontal(0), setvertical(0), setPosition(1);
+          } else if (treasure.includes(position)) {
+            return (
+              alert("Congratulation! You've found the treasure!"),
+              sethorizontal(0),
+              setvertical(0),
+              setPosition(1)
+            );
+          } else if (walls.includes(position + 1)) {
+            return (
+              sethorizontal(horizontal),
+              setvertical(vertical),
+              setPosition(position)
+            );
+          } else {
+            return (
+              console.log("east"),
+              horizontal + 1 > 9
+                ? sethorizontal(9)
+                : sethorizontal(horizontal + 1),
+              horizontal + 1 > 9
+                ? setPosition(position)
+                : setPosition(position + 1)
+            );
+          }
         }
       case 40:
-        if (fires.includes(position)) {
-          return sethorizontal(0), setvertical(0), setPosition(1);
-        } else if (treasure.includes(position)) {
-          return (
-            alert("Congratulation! You've found the treasure!"),
-            sethorizontal(0),
-            setvertical(0),
-            setPosition(1)
-          );
-        } else if (walls.includes(position + 10)) {
-          return (
-            sethorizontal(horizontal),
-            setvertical(vertical),
-            setPosition(position)
-          );
+        if (props.game == false) {
+          return;
         } else {
-          return (
-            console.log("south"),
-            vertical + 1 > 9 ? setvertical(9) : setvertical(vertical + 1),
-            vertical + 1 > 9
-              ? setPosition(position)
-              : setPosition(position + 10)
-          );
+          if (fires.includes(position)) {
+            return sethorizontal(0), setvertical(0), setPosition(1);
+          } else if (treasure.includes(position)) {
+            return (
+              alert("Congratulation! You've found the treasure!"),
+              sethorizontal(0),
+              setvertical(0),
+              setPosition(1)
+            );
+          } else if (walls.includes(position + 10)) {
+            return (
+              sethorizontal(horizontal),
+              setvertical(vertical),
+              setPosition(position)
+            );
+          } else {
+            return (
+              console.log("south"),
+              vertical + 1 > 9 ? setvertical(9) : setvertical(vertical + 1),
+              vertical + 1 > 9
+                ? setPosition(position)
+                : setPosition(position + 10)
+            );
+          }
         }
 
       default:
