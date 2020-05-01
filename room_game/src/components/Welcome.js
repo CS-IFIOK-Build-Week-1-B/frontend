@@ -145,7 +145,6 @@ const Container = styled.div`
   align-items: center;
   background-image: url(${img});
   background-size: cover;
-  border: 5px solid blue;
 `;
 
 const Game = styled.div`
