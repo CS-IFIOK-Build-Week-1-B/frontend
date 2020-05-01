@@ -1,4 +1,4 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import rock from "../utils/images/rock.jpeg";
 import walkway from "../utils/images/walkway.jpg";
@@ -27,10 +27,11 @@ const Map = (props) => {
       {seconds === 0 ? (
         <ReplayModal>
           <ReplayModalTextButtonDiv>
-            <ReplayText>You lost, click replay to start again</ReplayText>
-            <ReplayButton onClick={() => repeatGame()}>
-              Replay
-            </ReplayButton>
+            <ReplayText>
+              Too late, you lost.<p>The treasure has been stolen.</p> Click
+              replay to start again
+            </ReplayText>
+            <ReplayButton onClick={() => repeatGame()}>Replay</ReplayButton>
           </ReplayModalTextButtonDiv>
         </ReplayModal>
       ) : (
