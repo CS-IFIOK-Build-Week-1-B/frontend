@@ -42,6 +42,7 @@ const Welcome = (props) => {
     } else if (tileA < tileB) {
       comparison = -1;
     }
+    
     return comparison;
   };
 
