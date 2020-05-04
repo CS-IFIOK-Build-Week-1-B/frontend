@@ -43,6 +43,7 @@ const Welcome = (props) => {
       comparison = -1;
     }
     
+
     return comparison;
   };
 
